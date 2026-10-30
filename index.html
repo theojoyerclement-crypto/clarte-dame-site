@@ -31,7 +31,30 @@ main { max-width: 720px; margin: 0 auto; padding: 40px 16px 56px; }
 section h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: 21px; margin: 32px 0 8px; }
 section p { color: #6B6779; margin: 0; }
 footer { text-align: center; padding: 24px 16px 40px; color: #6B6779; font-size: 14px; }
-footer a { margin: 0 8px; }
+footer a { margin: 0 8px; display: inline-block; padding: 4px 0; }
+main.home { max-width: 1040px; }
+.cards { display: grid; gap: 16px; margin-bottom: 16px; }
+.cards .card { margin-bottom: 0; }
+/* Grand écran : les cartes et les liens se rangent côte à côte plutôt que de laisser du vide. */
+@media (min-width: 900px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  .links { grid-template-columns: repeat(3, 1fr); }
+}
+/* Petit téléphone : marges et titres resserrés. */
+@media (max-width: 380px) {
+  .hero { padding: 48px 16px 56px; }
+  .hero h1 { font-size: 32px; }
+  .hero p { font-size: 16px; }
+  .soon { font-size: 14px; padding: 10px 16px; }
+  .card { padding: 16px 18px; }
+  .doc-header h1 { font-size: 26px; }
+}
+/* Paysage sur téléphone : bandeau moins haut. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { padding: 28px 16px 36px; }
+  .hero img { width: 72px; height: 72px; }
+  .hero h1 { font-size: 32px; margin-top: 8px; }
+}
 </style>
 </head>
 <body>
@@ -41,7 +64,8 @@ footer a { margin: 0 8px; }
   <p>Découvrez les nombres qui vous accompagnent depuis votre naissance, et ce qu'ils disent de vous.</p>
   <span class="soon">Bientôt sur l'App Store et Google Play</span>
 </div>
-<main>
+<main class="home">
+  <div class="cards">
   <div class="card">
     <h2>L'application</h2>
     <p>À partir de vos prénoms, de votre nom de naissance et de votre date de naissance, Clarté d'âme pose vos sept clés de numérologie sur une silhouette et vous en donne une lecture douce et bienveillante. Le calcul se fait sur votre téléphone : vos informations ne le quittent pas.</p>
@@ -49,6 +73,7 @@ footer a { margin: 0 8px; }
   <div class="card">
     <h2>Pour aller plus loin</h2>
     <p>Un rapport complet en PDF et des PDF courts consacrés à une seule question : vie amoureuse, métier, mission, compatibilité avec une personne…</p>
+  </div>
   </div>
   <div class="links">
     <a href="confidentialite.html">Politique de confidentialité</a>
